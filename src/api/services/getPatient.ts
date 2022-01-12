@@ -1,10 +1,15 @@
-import {get} from "../request";
+import {get} from '../request';
+import {PatientSearchModel} from '../../model/patientSearchModel';
 
 const PATIENT_PREFIX = '/Patient';
 
 export class PatientService {
-    static getPatient(): Promise<any> {
-        return get(`${PATIENT_PREFIX}?name=*a`)
-            .then((response) => response);
-    }
+  static getPatient(
+    searchValue: string,
+    query: string,
+  ): Promise<PatientSearchModel> {
+    return get<PatientSearchModel>(
+      `${PATIENT_PREFIX}?${searchValue}=${query}`,
+    ).then(response => response.getBody());
+  }
 }
