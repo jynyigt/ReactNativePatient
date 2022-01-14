@@ -1,4 +1,4 @@
-import {Text, View} from 'react-native';
+import {Image, Text, View} from 'react-native';
 import {Styles} from './style';
 import React from 'react';
 import {useSwitchNavigation} from '../../store/ui/hooks';
@@ -12,7 +12,11 @@ export function SplashScreen() {
 
   return (
     <View style={Styles.container}>
-      <Text style={Styles.text}>Splash Screen</Text>
+      <Image
+        style={Styles.imageView}
+        source={require('./images/FHIR1-1024x766.jpeg')}
+      />
+      <Text style={Styles.text}>Patient Search with FHIR</Text>
     </View>
   );
 }

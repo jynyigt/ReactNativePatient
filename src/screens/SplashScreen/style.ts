@@ -7,8 +7,15 @@ export const Styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'white',
   },
+  imageView: {
+    width: 300,
+    height: 300,
+  },
   text: {
-    color: 'black',
-    fontSize: 16,
+    color: '#000000',
+    fontSize: 14,
+    marginBottom: 100,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
