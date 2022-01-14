@@ -1,6 +1,6 @@
 import {ResponseModel} from './request.model';
 import {HttpHeaders} from './http-headers';
-import {AsyncStorage} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const BASE_URL = 'https://fhir.imagerad.com/dummy';
 
@@ -26,7 +26,7 @@ export function request<T>(
   body?: any,
   options?: any,
 ): Promise<ResponseModel<T>> {
-  return AsyncStorage.getItem('session_id')
+  return AsyncStorage.getItem('token')
     .catch(() => null)
     .then(sessionId => {
       const headers: HttpHeaders = {

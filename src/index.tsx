@@ -4,6 +4,7 @@ import {DefaultTheme, NavigationContainer} from '@react-navigation/native';
 import 'react-native-gesture-handler';
 import {ApplicationNavigator} from './navigators/application.navigator';
 import {store} from './store';
+import {IndicatorView} from './components/IndicatorView';
 
 const theme = {
   ...DefaultTheme,
@@ -15,9 +16,11 @@ const theme = {
 
 function AppComponent() {
   return (
-    <NavigationContainer theme={theme}>
-      <ApplicationNavigator />
-    </NavigationContainer>
+    <IndicatorView>
+      <NavigationContainer theme={theme}>
+        <ApplicationNavigator />
+      </NavigationContainer>
+    </IndicatorView>
   );
 }
 

@@ -11,6 +11,7 @@ import {PatientService} from '../../api/services/getPatient';
 import {Dropdown} from 'react-native-element-dropdown';
 import {Styles} from './style';
 import {PatientSearchModel} from '../../model/patientSearchModel';
+import {useUIActions} from '../../store/ui/hooks';
 
 const data = [
   {label: 'Name', value: 'name'},
@@ -20,6 +21,7 @@ const data = [
 ];
 
 export function HomePageScreen() {
+  const setBusy = useUIActions(actions => actions.changeBusyAction);
   const [value, setValue] = useState('');
   const [valueTextInput, setValueTextInput] = useState('');
   const [patientSearchList, setPatientSearchList] =
@@ -27,11 +29,14 @@ export function HomePageScreen() {
   const [patientSearchListTotal, setPatientSearchListTotal] = useState(false);
 
   const searchPatient = useCallback(() => {
-    PatientService.getPatient(value, valueTextInput).then(response => {
-      setPatientSearchList(response);
-      setPatientSearchListTotal(response.total === 0);
-    });
-  }, [value, valueTextInput]);
+    setBusy(true);
+    PatientService.getPatient(value, valueTextInput)
+      .then(response => {
+        setPatientSearchList(response);
+        setPatientSearchListTotal(response.total === 0);
+      })
+      .finally(() => setBusy(false));
+  }, [setBusy, value, valueTextInput]);
 
   return (
     <View style={Styles.containerView}>
