@@ -11,6 +11,9 @@ export const Styles = StyleSheet.create({
     marginRight: 24,
     backgroundColor: 'white',
     borderRadius: 8,
+    shadowColor: '#190134',
+    shadowOpacity: 0.12,
+    elevation: 5,
   },
   placeholderStyle: {
     color: '#d6d6d6',

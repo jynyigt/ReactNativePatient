@@ -56,17 +56,19 @@ export function HomePageScreen() {
           }}
         />
       </View>
-      <View style={Styles.searchBoxView}>
-        <View style={Styles.searchTextView}>
-          <TextInput
-            style={Styles.searchText}
-            placeholder={'Search'}
-            placeholderTextColor={'#d6d6d6'}
-            underlineColorAndroid="transparent"
-            onChangeText={setValueTextInput}
-          />
+      {value.length ? (
+        <View style={Styles.searchBoxView}>
+          <View style={Styles.searchTextView}>
+            <TextInput
+              style={Styles.searchText}
+              placeholder={'Search'}
+              placeholderTextColor={'#d6d6d6'}
+              underlineColorAndroid="transparent"
+              onChangeText={setValueTextInput}
+            />
+          </View>
         </View>
-      </View>
+      ) : null}
       <View
         style={[
           Styles.buttonView,

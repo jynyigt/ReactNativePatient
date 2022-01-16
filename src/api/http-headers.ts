@@ -1,3 +1,3 @@
 export type HttpHeaders = {
-    [key: string]: string;
+  [key: string]: string;
 };
